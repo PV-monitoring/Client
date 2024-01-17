@@ -1,18 +1,28 @@
 import React from 'react'
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Products_dashboard from './components/Products_dashboard';
-import Products_mobileapp from './components/Products_mobileapp';
-import Pricing from './components/Pricing';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import { HOME_ROUTE,LOGIN_ROUTE,REGISTER_ROUTE,DASHBOARD_ROUTE} from './utils/routes';
 
 function App() {
   return (
-      <div >
-       <Navbar/>
-       <Hero/>
-       <Products_dashboard/>
-       <Products_mobileapp/>
-       <Pricing/>
+      <div className="App">
+        <Router>
+        
+          <Routes>
+            <Route exact path={HOME_ROUTE} element={<Home />} />
+            <Route path={LOGIN_ROUTE} element={<Login/>}/>
+            <Route path={REGISTER_ROUTE} element={<Register />} />
+            <Route path={DASHBOARD_ROUTE} element={<Dashboard />} />
+          </Routes>
+        </Router>
+      
       </div> 
   );
 }
