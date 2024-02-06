@@ -26,7 +26,7 @@ const Login = () => {
 
       if (response.data.message){
         navigateTo('/Login')
-        setLoginStatus("Credential Don't Exist!")
+        setLoginStatus("Credential Don't Match!")
       }
       else{
         navigateTo('/Dashboard')
