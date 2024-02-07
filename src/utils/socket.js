@@ -1,25 +1,23 @@
 // websocket.js
-const socket = new WebSocket('ws://localhost:3002');
+import { io } from 'socket.io-client';
 
-socket.addEventListener('open', (event) => {
-  console.log('WebSocket connection opened:', event);
+const socket = io('http://localhost:3002');
+
+socket.on('connect', () => {
+  console.log('Socket.IO connection opened');
 });
 
-socket.addEventListener('message', (event) => {
-  const message = JSON.parse(event.data);
-
-  if (message.event === 'dataUpdate') {
-    console.log('Received data update from server:', message.data);
-    // Update your UI or perform actions with the received data
-  }
+socket.on('dataUpdate', (data) => {
+  // console.log('Received data update from server:', data);
+  // Update your UI or perform actions with the received data
 });
 
-socket.addEventListener('close', (event) => {
-  console.log('WebSocket connection closed:', event);
+socket.on('disconnect', () => {
+  console.log('Socket.IO connection closed');
 });
 
-socket.addEventListener('error', (event) => {
-  console.error('WebSocket error:', event);
+socket.on('error', (error) => {
+  console.error('Socket.IO error:', error);
 });
 
 export default socket;
