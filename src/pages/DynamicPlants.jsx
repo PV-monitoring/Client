@@ -49,7 +49,7 @@ const DynamicPlantPage = () => {
               <td>{plant.address}</td>
               <td>{plant.create_time}</td>
               <td>{plant.status}</td>
-              <td>{plant.tatal}</td>
+              <td>{plant.total}</td>
             </tr>
           ))}
         </tbody>
