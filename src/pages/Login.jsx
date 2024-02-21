@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import Navbar from '../components/Navbar'
 import Video from '../assets/solar_animation_3.mp4'
 import { REGISTER_ROUTE } from '../utils/routes'
 import { FaUserShield } from 'react-icons/fa'
@@ -18,7 +17,7 @@ const Login = () => {
     const loginUser = (e)=>{
 
       e.preventDefault();
-      Axios.post('http://localhost:3002/Login',{
+      Axios.post('http://localhost:5001/Login',{
         LoginuserName: loginuserName,
         Loginpassword: loginpassword
     }).then((response)=>{

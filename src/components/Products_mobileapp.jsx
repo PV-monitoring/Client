@@ -11,7 +11,7 @@ const sentences = [
 
     const Products_mobileapp = () => {
         return (
-          <div>
+          <div className=' bg-black'>
             <div className='w-full py-16 px-4'>
               <div className='max-w-[1240] mx-auto grid md:grid-cols-2'>
                 {/* Text Content */}
