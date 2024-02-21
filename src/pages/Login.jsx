@@ -44,7 +44,7 @@ const Login = () => {
     },[LoginStatus])
   return (
     
-    <div className=' loginPage text-white flex h-[100vh]  m-auto overflow-hidden bg-black p-4 rounded-md @apply shadow-md max-w-[990px]' >
+    <div className=' loginPage text-white flex h-[100vh]   m-auto overflow-hidden bg-black p-4 rounded-md @apply shadow-md ' >
       <div className='container flex h-[75vh] w-[100%] m-auto justify-between items-center space-x-4 rounded-[10px] bg-gray-900'>
         <div className='videoDiv flex w-[70%] h-[100%] p-[1.5rem] text-center justify-center flex-col m-auto rounded-[10px] overflow-hidden position: relative'>
         <video src={Video} autoPlay muted loop className='h-[100%] w-[100%] top-0 bottom-0 right-0 left-0 object-cover position: absolute'></video>
