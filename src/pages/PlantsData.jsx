@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const PlantPage = () => {
+const PlantsData = () => {
   const [plants, setPlants] = useState([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3002/plants');
-        console.log('React Received Data:', response.data.plants);
-        setPlants(response.data.plants);
+        const response = await axios.get('http://localhost:5001/plantsdata');
+        console.log('React Received Data:', response.data);
+        setPlants(response.data);
       } catch (error) {
         console.error('Error fetching plant data:', error);
       }
@@ -45,4 +45,4 @@ const PlantPage = () => {
   );
 };
 
-export default PlantPage;
+export default PlantsData;

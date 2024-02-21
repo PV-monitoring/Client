@@ -1,7 +1,7 @@
 // websocket.js
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3002');
+const socket = io('http://localhost:5002');
 
 socket.on('connect', () => {
   console.log('Socket.IO connection opened');

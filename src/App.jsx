@@ -5,12 +5,13 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import PlantPage from './pages/PlantPage';
+import PlantsData from './pages/PlantsData';
 import DynamicPlantPage from './pages/DynamicPlants';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { HOME_ROUTE,LOGIN_ROUTE,REGISTER_ROUTE,DASHBOARD_ROUTE,PLANTS_ROUTE,DYNAMIC_PLANTS_ROUTE} from './utils/routes';
+import { HOME_ROUTE,LOGIN_ROUTE,REGISTER_ROUTE,DASHBOARD_ROUTE,PLANTS_DATA_ROUTE,DYNAMIC_PLANTS_ROUTE} from './utils/routes';
+
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Route path={LOGIN_ROUTE} element={<Login/>}/>
             <Route path={REGISTER_ROUTE} element={<Register />} />
             <Route path={DASHBOARD_ROUTE} element={<Dashboard />} />
-            <Route path={PLANTS_ROUTE} element={<PlantPage />} />
+            <Route path={PLANTS_DATA_ROUTE} element={<PlantsData />} />
             <Route path={DYNAMIC_PLANTS_ROUTE} element={<DynamicPlantPage />} />
           </Routes>
         </Router>
