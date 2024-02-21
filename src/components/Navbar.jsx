@@ -11,7 +11,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white bg-black fixed top-0 left-0 w-full right-0' >
+    <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white bg-black fixed top-0 left-0 w-full right-0 z-10 overflow-hidden' >
         <h1 className='w-full text-3xl font-bold text-[#00df9a]'>Green Energy Monitoring</h1>
         <ul className=' hidden md:flex'>
           <li className='p-4'><a href={HOME_ROUTE}>Home</a></li>
