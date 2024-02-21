@@ -7,7 +7,7 @@ import { Fade } from 'react-awesome-reveal';
 function Hero() {
 
   return (
-    <div className='text-white'>
+    <div className='text-white bg-black' >
         <div className='max-w-[800px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
           <Fade direction='down'>
             <p className=' font-bold p-2 md:text-3xl sm:text-2xl text-xl'>   Join the revolution choose green energy.  </p>
