@@ -1,4 +1,6 @@
 import { tokens } from "../theme";
+import { useState, useEffect } from "react";
+import socket from "../utils/socket.js";
 
 export const mockDataTeam = [
   {
@@ -199,72 +201,114 @@ export const mockDataContacts = [
   },
 ];
 
-export const mockDataInvoices = [
-  {
-    id: 1,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "03/12/2022",
-  },
-  {
-    id: 2,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "06/15/2021",
-  },
-  {
-    id: 3,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "05/02/2022",
-  },
-  {
-    id: 4,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "03/21/2022",
-  },
-  {
-    id: 5,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "01/12/2021",
-  },
-  {
-    id: 6,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "11/02/2022",
-  },
-  {
-    id: 7,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "02/11/2022",
-  },
-  {
-    id: 8,
-    name: "Medawewa",
-    capacity: "30kW",
-    power: "1kW",
-    location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-    date: "05/02/2021",
-  },
-];
+// export const mockDataInvoices = [
+//   {
+//     id: 1,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "03/12/2022",
+//   },
+//   {
+//     id: 2,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "06/15/2021",
+//   },
+//   {
+//     id: 3,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "05/02/2022",
+//   },
+//   {
+//     id: 4,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "03/21/2022",
+//   },
+//   {
+//     id: 5,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "01/12/2021",
+//   },
+//   {
+//     id: 6,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "11/02/2022",
+//   },
+//   {
+//     id: 7,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "02/11/2022",
+//   },
+//   {
+//     id: 8,
+//     name: "Medawewa",
+//     capacity: "30kW",
+//     status: "1kW",
+//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
+//     created_time: "05/02/2021",
+//   },
+// ];
+
+export const dynamicPlants = () => {
+  const [plants, setPlants] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Your server should emit a 'plantsData' event when there's new data
+        socket.on("dataUpdate", (data) => {
+          console.log("Received plant data:", data);
+          setPlants(data);
+        });
+      } catch (error) {
+        console.error("Error fetching plant data:", error);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      // Clean up event listeners on component unmount
+      socket.off("dataUpdate");
+    };
+  }, []); // Empty dependency array to run the effect only once
+
+  return plants;
+};
+
+// Export a function that takes dynamic data as a parameter
+export const getMockDataInvoices = (dynamicData) => {
+  // Transform dynamic data if needed
+  const transformedData = dynamicData.map((plant) => ({
+    id: plant.plant_id,
+    name: plant.plant_name,
+    capacity: plant.capacity,
+    status: plant.status,
+    location: plant.address,
+    created_time: plant.create_time,
+  }));
+
+  return transformedData;
+};
 
 export const mockTransactions = [
   {
