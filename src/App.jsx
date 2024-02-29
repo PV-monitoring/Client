@@ -5,11 +5,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import PlantPage from './pages/PlantPage';
-import DynamicPlantPage from './pages/DynamicPlants';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { HOME_ROUTE,LOGIN_ROUTE,REGISTER_ROUTE,DASHBOARD_ROUTE,PLANTS_ROUTE,DYNAMIC_PLANTS_ROUTE,TEAM_ROUTE,CONTACT_ROUTE,INVOICE_ROUTE,FORM_ROUTE,BAR_ROUTE,PIE_ROUTE,LINE_ROUTE,FAQ_ROUTE,CALENDAR_ROUTE,GEO_ROUTE} from './utils/routes';
+import { HOME_ROUTE,LOGIN_ROUTE,REGISTER_ROUTE,DASHBOARD_ROUTE,PLANTS_ROUTE,TEAM_ROUTE,CONTACT_ROUTE,INVOICE_ROUTE,FORM_ROUTE,BAR_ROUTE,PIE_ROUTE,LINE_ROUTE,FAQ_ROUTE,CALENDAR_ROUTE,GEO_ROUTE} from './utils/routes';
 
 //Dashboard imports
 import Topbar from "./pages/global/Topbar";
@@ -40,7 +39,6 @@ function App() {
             <Route path={REGISTER_ROUTE} element={<Register />} />
             
             <Route path={PLANTS_ROUTE} element={<PlantPage />} />
-            <Route path={DYNAMIC_PLANTS_ROUTE} element={<DynamicPlantPage />} />
           </Routes>
 
          <div className='dashbord_routes'>

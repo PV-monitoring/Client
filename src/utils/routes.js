@@ -3,7 +3,6 @@ export const LOGIN_ROUTE = '/login';
 export const REGISTER_ROUTE = '/register'
 export const DASHBOARD_ROUTE = '/dashboard'
 export const PLANTS_ROUTE = '/plants'
-export const DYNAMIC_PLANTS_ROUTE = '/dynamicplants'
 export const TEAM_ROUTE = '/team'
 export const CONTACT_ROUTE = '/contacts'
 export const INVOICE_ROUTE = '/invoices'
