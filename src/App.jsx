@@ -1,19 +1,33 @@
 //home,login,register imports
-import {React,useState} from 'react'
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import PlantPage from './pages/PlantPage';
+import { React, useState } from "react";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { HOME_ROUTE,LOGIN_ROUTE,REGISTER_ROUTE,DASHBOARD_ROUTE,PLANTS_ROUTE,TEAM_ROUTE,CONTACT_ROUTE,INVOICE_ROUTE,FORM_ROUTE,BAR_ROUTE,PIE_ROUTE,LINE_ROUTE,FAQ_ROUTE,CALENDAR_ROUTE,GEO_ROUTE} from './utils/routes';
+import {
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  REGISTER_ROUTE,
+  DASHBOARD_ROUTE,
+  TEAM_ROUTE,
+  CONTACT_ROUTE,
+  INVOICE_ROUTE,
+  FORM_ROUTE,
+  BAR_ROUTE,
+  PIE_ROUTE,
+  LINE_ROUTE,
+  FAQ_ROUTE,
+  CALENDAR_ROUTE,
+  GEO_ROUTE,
+} from "./utils/routes";
 
 //Dashboard imports
 import Topbar from "./pages/global/Topbar";
 import Sidebar from "./pages/global/Sidebar";
- import Team from "./pages/team/index";
+import Team from "./pages/team/index";
 import Invoices from "./pages/invoices";
 import Contacts from "./pages/contacts";
 import Bar from "./pages/bar";
@@ -26,24 +40,18 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./pages/calendar";
 
-
 function App() {
-  
   return (
-      <div className="App">
-        
-        <Router>
-          <Routes>
-            <Route exact path={HOME_ROUTE} element={<Home />} />
-            <Route path={LOGIN_ROUTE} element={<Login/>}/>
-            <Route path={REGISTER_ROUTE} element={<Register />} />
-            
-            <Route path={PLANTS_ROUTE} element={<PlantPage />} />
-          </Routes>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route exact path={HOME_ROUTE} element={<Home />} />
+          <Route path={LOGIN_ROUTE} element={<Login />} />
+          <Route path={REGISTER_ROUTE} element={<Register />} />
+        </Routes>
 
-         <div className='dashbord_routes'>
-         
-         <Routes>
+        <div className="dashbord_routes">
+          <Routes>
             <Route path={DASHBOARD_ROUTE} element={<Dashboard />} />
             <Route path={TEAM_ROUTE} element={<Team />} />
             <Route path={CONTACT_ROUTE} element={<Contacts />} />
@@ -55,19 +63,10 @@ function App() {
             <Route path={FAQ_ROUTE} element={<FAQ />} />
             <Route path={CALENDAR_ROUTE} element={<Calendar />} />
             <Route path={GEO_ROUTE} element={<Geography />} />
-          
-        </Routes>
-
-        
-
-         </div>
-         
-          
-        </Router>
-        
-      </div>
-
-      
+          </Routes>
+        </div>
+      </Router>
+    </div>
   );
 }
 
