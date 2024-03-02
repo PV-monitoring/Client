@@ -12,3 +12,4 @@ export const LINE_ROUTE = "/line";
 export const FAQ_ROUTE = "/faq";
 export const CALENDAR_ROUTE = "/calendar";
 export const GEO_ROUTE = "/geography";
+export const PLANT_DETAILS_ROUTE = "/plant-details";

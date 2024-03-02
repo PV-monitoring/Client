@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
@@ -18,6 +18,13 @@ const Invoices = () => {
   const dynamicData = dynamicPlants();
   // Call the function to get transformed data based on dynamic data
   const mockDataInvoices = getMockDataInvoices(dynamicData);
+
+  // Function to handle row click
+  const handleRowClick = (params) => {
+    const { id, name, location, capacity, status } = params.row;
+    // Open a new tab with the plant details page
+    window.open(`/plant-details?id=${id}&name=${name}&location=${location}&capacity=${capacity}&status=${status}`, "_blank");
+  };
 
   const columns = [
     { field: "id", headerName: "Plant ID" },
@@ -41,11 +48,6 @@ const Invoices = () => {
       field: "status",
       headerName: "Plant Status",
       flex: 1,
-      // renderCell: (params) => (
-      //   <Typography color={colors.greenAccent[500]}>
-      //     {params.row.power}
-      //   </Typography>
-      // ),
     },
     {
       field: "created_time",
@@ -88,11 +90,10 @@ const Invoices = () => {
                     borderTop: "none",
                     backgroundColor: colors.blueAccent[700],
                   },
-                  "& .MuiCheckbox-root": {
-                    color: `${colors.greenAccent[200]} !important`,
-                  },
-                }}>
-                <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
+                  // Remove checkbox styles
+                }}
+              >
+                <DataGrid rows={mockDataInvoices} columns={columns} onRowClick={handleRowClick} />
               </Box>
             </Box>
           </main>
