@@ -425,109 +425,109 @@ export const mockPieData = [
 
 export const mockLineData = [
   {
-    id: "Sir Razik Fared",
+    id: "Actual Generation",
     color: tokens("dark").greenAccent[500],
     data: [
       {
-        x: "Jan 2023",
+        x: "Jan",
         y: 101,
       },
       {
-        x: "Feb 2023",
+        x: "Feb",
         y: 75,
       },
       {
-        x: "March 2023",
+        x: "March",
         y: 36,
       },
       {
-        x: "April 2023",
+        x: "April",
         y: 216,
       },
       {
-        x: "May 2023",
+        x: "May",
         y: 35,
       },
       {
-        x: "June 2023",
+        x: "June",
         y: 236,
       },
       {
-        x: "July 2023",
+        x: "July",
         y: 88,
       },
       {
-        x: "Aug 2023",
+        x: "Aug",
         y: 232,
       },
       {
-        x: "Sept 2023",
+        x: "Sept",
         y: 281,
       },
       {
-        x: "Oct 2023",
+        x: "Oct",
         y: 1,
       },
       {
-        x: "Nov 2023",
+        x: "Nov",
         y: 35,
       },
       {
-        x: "Dec 2023s",
+        x: "Dec",
         y: 14,
       },
     ],
   },
   {
-    id: "Dikkapitiya V.",
+    id: "Expected Generation",
     color: tokens("dark").blueAccent[300],
     data: [
       {
-        x: "Jan 2023",
+        x: "Jan",
         y: 10,
       },
       {
-        x: "Feb 2023",
+        x: "Feb",
         y: 134,
       },
       {
-        x: "March 2023",
+        x: "March",
         y: 210,
       },
       {
-        x: "April 2023",
+        x: "April",
         y: 26,
       },
       {
-        x: "May 2023",
+        x: "May",
         y: 135,
       },
       {
-        x: "June 2023",
+        x: "June",
         y: 36,
       },
       {
-        x: "July 2023",
+        x: "July",
         y: 81,
       },
       {
-        x: "Aug 2023",
+        x: "Aug",
         y: 132,
       },
       {
-        x: "Sept 2023",
+        x: "Sept",
         y: 181,
       },
       {
-        x: "Oct 2023",
+        x: "Oct",
         y: 11,
       },
       {
-        x: "Nov 2023",
+        x: "Nov",
         y: 215,
       },
       {
-        x: "Dec 2023s",
+        x: "Dec",
         y: 114,
       },
     ],
