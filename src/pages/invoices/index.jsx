@@ -20,7 +20,7 @@ const Invoices = () => {
   const mockDataInvoices = getMockDataInvoices(dynamicData);
 
   const columns = [
-    { field: "id", headerName: "Plant ID" },
+    // { field: "id", headerName: "Plant ID" },
     {
       field: "name",
       headerName: "Plant Name",
@@ -38,14 +38,19 @@ const Invoices = () => {
       flex: 1,
     },
     {
-      field: "status",
-      headerName: "Plant Status",
+      field: "power",
+      headerName: "Power",
       flex: 1,
       // renderCell: (params) => (
       //   <Typography color={colors.greenAccent[500]}>
       //     {params.row.power}
       //   </Typography>
       // ),
+    },
+    {
+      field: "status",
+      headerName: "Plant Status",
+      flex: 1,
     },
     {
       field: "created_time",

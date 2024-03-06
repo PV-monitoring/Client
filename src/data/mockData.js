@@ -302,6 +302,7 @@ export const getMockDataInvoices = (dynamicData) => {
     id: plant.plant_id,
     name: plant.plant_name,
     capacity: plant.capacity,
+    power: plant.pac,
     status: plant.status,
     location: plant.address,
     created_time: plant.create_time,
