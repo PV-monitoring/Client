@@ -27,8 +27,8 @@ const Register = () => {
 
 
   return (
-    
-    <div className=' registerPage text-white flex h-[100vh]  m-auto overflow-hidden bg-black p-4 rounded-md @apply shadow-md max-w-[990px] ' >
+    <div className='register bg-black'>
+      <div className=' registerPage text-white flex h-[100vh]  m-auto overflow-hidden bg-black p-4 rounded-md @apply shadow-md max-w-[1100px] ' >
       <div className='container flex  w-[100%] h-[75vh] m-auto justify-between items-center space-x-4 rounded-[10px] bg-gray-900'>
         <div className='videoDiv flex w-[70%] h-[100%] p-[1.5rem] text-center justify-center flex-col m-auto rounded-[10px] overflow-hidden position: relative'>
         <video src={Video} autoPlay muted loop className='h-[100%] w-[100%] top-0 bottom-0 right-0 left-0 object-cover position: absolute'></video>
@@ -54,7 +54,7 @@ const Register = () => {
           <h3 className=' lg:text-center font-bold text-xl'>Let Us Know You!</h3>
           </div>
           <form action="" className='form grid text-center justify-center gap-4'>
-            <span className='showMessage display-block text-white p-[10px] bg-black rounded-xl text-center'>Login status will go here</span>
+            {/* <span className='showMessage display-block text-white p-[10px] bg-black rounded-xl text-center'>Login status will go here</span> */}
 
             <div className='inputDiv'>
               <label htmlFor="email" className='text-white font-[14px] display:block'>Email</label>
@@ -101,6 +101,10 @@ const Register = () => {
       </div>
      
     </div>
+
+    </div>
+    
+    
   )
 }
 

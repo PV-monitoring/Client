@@ -11,7 +11,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white bg-black fixed top-0 left-0 w-full right-0 z-10 overflow-hidden' >
+    <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-[#70827b] font-bold bg-black fixed top-0 left-0 w-mx right-0 z-10 overflow-hidden bg-transparent' >
         <h1 className='w-full text-3xl font-bold text-[#00df9a]'>Green Energy Monitoring</h1>
         <ul className=' hidden md:flex'>
           <li className='p-4'><a href={HOME_ROUTE}>Home</a></li>
@@ -28,7 +28,7 @@ const Navbar = () => {
           {nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20}/>}
         </div>
 
-        <button className='bg-[#00df9a] w-[100px] rounded-[8px] font-medium  mx-2 my-[-5px] py-2 text-black p-4'>
+        <button className='bg-[#00df9a] w-[100px] rounded-[8px] font-bold  mx-2 my-[-5px] py-2 text-black p-4 '>
         <a href={LOGIN_ROUTE}>Login</a></button>
 
         <div className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500': 'fixed left-[-100%] ease-in-out duration-500'}>
