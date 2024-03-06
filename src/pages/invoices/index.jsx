@@ -27,7 +27,7 @@ const Invoices = () => {
   };
 
   const columns = [
-    { field: "id", headerName: "Plant ID" },
+    // { field: "id", headerName: "Plant ID" },
     {
       field: "name",
       headerName: "Plant Name",
@@ -42,6 +42,11 @@ const Invoices = () => {
     {
       field: "capacity",
       headerName: "Capacity",
+      flex: 1,
+    },
+    {
+      field: "power",
+      headerName: "Power",
       flex: 1,
     },
     {
