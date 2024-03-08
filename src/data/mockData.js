@@ -296,6 +296,7 @@ export const dynamicPlants = () => {
 };
 
 // Export a function that takes dynamic data as a parameter
+// Export a function that takes dynamic data as a parameter
 export const getMockDataInvoices = (dynamicData) => {
   // Transform dynamic data if needed
   const transformedData = dynamicData.map((plant) => ({
@@ -303,12 +304,28 @@ export const getMockDataInvoices = (dynamicData) => {
     name: plant.plant_name,
     capacity: plant.capacity,
     power: plant.pac,
-    status: plant.status,
+    status: getStatusString(plant.status), // Map status to corresponding string
     location: plant.address,
     created_time: plant.create_time,
   }));
 
   return transformedData;
+};
+
+// Function to map status values to corresponding strings
+const getStatusString = (status) => {
+  switch (status) {
+    case -1:
+      return "Fault";
+    case 0:
+      return "Waiting";
+    case 1:
+      return "Working";
+    case 2:
+      return "Offline";
+    default:
+      return status; // Return the status as is if not recognized
+  }
 };
 
 export const mockTransactions = [
