@@ -69,17 +69,7 @@ const PlantDetailsPage = () => {
           <Box m="20px" width="90%">
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <Header title="Plant Details Page" subtitle={plantDetails.name} />
-              {/* Additional state of the plant */}
-              <Box>
-                <Typography variant="h2" sx={{ color: colors.greenAccent[500] }}>
-                  Plant State
-                </Typography>
-                {/* Render additional state here */}
-                {/* For example: */}
-                <Typography variant="h4">
-                  Cloudy
-                </Typography>
-              </Box>
+             
             </Box>
             <Box display="flex" flexDirection="row" justifyContent="space-between">
               <Box
@@ -113,82 +103,100 @@ const PlantDetailsPage = () => {
                 </Box>
               </Box>
               <Box
-                backgroundColor={colors.primary[400]}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Gauge
-                  subtitle={`${plantDetails.power/1000} kW`} // Set title as the power value
-                  title="Current Working Power"
-                  progress={`${(plantDetails.power/1000)/plantDetails.capacity}`} // Pass the calculated progress
-                  icon={
-                    <OfflineBoltIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />
-                  }
-                />
-              </Box>
-              <Box
-                width="60%"
                 display="flex"
                 flexDirection="column"
                 alignItems="flex-start" // Aligning content left
+                justifyContent="space-between"
                 ml="20px"
               >
+                {/* Plant State  */}
                 <Box
-                  height="300px"
-                  width="100%"
                   border={`1px solid ${colors.grey[300]}`}
-                  display="flex"
-                  flexDirection="column"
-                  alignItems="flex-start" // Aligning content left
-                  p="20px"
+                  borderRadius="8px"
+                  padding="20px"
+                  boxShadow={`0px 4px 8px ${colors.grey[300]}`}
+                  maxWidth="400px"
+                  mb="20px" // Add margin bottom to create space between plant details and stat box
                 >
-                  <Typography variant="h5" fontWeight="600" color={colors.grey[100]}>
-                    Generation Gap
+                  <Typography variant="h5" gutterBottom>
+                    <b>Current Plant Condition</b>
                   </Typography>
-                  <Typography variant="h3" fontWeight="bold" color={colors.greenAccent[500]}>
-                    500 kWh
+                  {/* Render cloudy state information here */}
+                  {/* For example: */}
+                  <Typography variant="h5">
+                    Cloudy
                   </Typography>
-                  <IconButton style={{ marginLeft: "auto" }}> {/* Adjusting the style */}
-                    <DownloadOutlinedIcon sx={{ fontSize: "26px", color: colors.greenAccent[500] }} />
-                  </IconButton>
-                  <Box height="100%" width="100%">
-                    <LineChart />
-                  </Box>
+                </Box>
+                {/* Gauge Component */}
+                <Box
+                  backgroundColor={colors.primary[400]}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Gauge
+                    subtitle={`${plantDetails.power/1000} kW`} // Set title as the power value
+                    title="Current Working Power"
+                    progress={`${(plantDetails.power/1000)/plantDetails.capacity}`} // Pass the calculated progress
+                    icon={
+                      <OfflineBoltIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />
+                    }
+                  />
+                </Box>
+              </Box>
+              {/* Line Chart */}
+              <Box
+                height="300px"
+                width="60%"
+                border={`1px solid ${colors.grey[300]}`}
+                display="flex"
+                flexDirection="column"
+                alignItems="flex-start" // Aligning content left
+                p="20px"
+              >
+                <Typography variant="h5" fontWeight="600" color={colors.grey[100]}>
+                  Generation Gap
+                </Typography>
+                <Typography variant="h3" fontWeight="bold" color={colors.greenAccent[500]}>
+                  500 kWh
+                </Typography>
+                <IconButton style={{ marginLeft: "auto" }}> {/* Adjusting the style */}
+                  <DownloadOutlinedIcon sx={{ fontSize: "26px", color: colors.greenAccent[500] }} />
+                </IconButton>
+                <Box height="100%" width="100%">
+                  <LineChart />
                 </Box>
               </Box>
             </Box>
-            <Box mt={4}>
-              <Header title="Inverter Information" subtitle="List of Inverters" />
-              <Box
-                m="40px 0 0 0"
-                height="75vh"
-                sx={{
-                  "& .MuiDataGrid-root": {
-                    border: "none",
-                  },
-                  "& .MuiDataGrid-cell": {
-                    borderBottom: "none",
-                  },
-                  "& .name-column--cell": {
-                    color: colors.greenAccent[300],
-                  },
-                  "& .MuiDataGrid-columnHeaders": {
-                    backgroundColor: colors.blueAccent[700],
-                    borderBottom: "none",
-                  },
-                  "& .MuiDataGrid-virtualScroller": {
-                    backgroundColor: colors.primary[400],
-                  },
-                  "& .MuiDataGrid-footerContainer": {
-                    borderTop: "none",
-                    backgroundColor: colors.blueAccent[700],
-                  },
-                  // Remove checkbox styles
-                }}
-              >
-                <DataGrid rows={inverterData} columns={columns} />
-              </Box>
+            {/* Data Grid */}
+            <Box
+              m="40px 0 0 0"
+              height="75vh"
+              sx={{
+                "& .MuiDataGrid-root": {
+                  border: "none",
+                },
+                "& .MuiDataGrid-cell": {
+                  borderBottom: "none",
+                },
+                "& .name-column--cell": {
+                  color: colors.greenAccent[300],
+                },
+                "& .MuiDataGrid-columnHeaders": {
+                  backgroundColor: colors.blueAccent[700],
+                  borderBottom: "none",
+                },
+                "& .MuiDataGrid-virtualScroller": {
+                  backgroundColor: colors.primary[400],
+                },
+                "& .MuiDataGrid-footerContainer": {
+                  borderTop: "none",
+                  backgroundColor: colors.blueAccent[700],
+                },
+                // Remove checkbox styles
+              }}
+            >
+              <DataGrid rows={inverterData} columns={columns} />
             </Box>
           </Box>
         </div>

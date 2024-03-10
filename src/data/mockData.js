@@ -316,13 +316,13 @@ export const getMockDataInvoices = (dynamicData) => {
 const getStatusString = (status) => {
   switch (status) {
     case -1:
-      return "Fault";
+      return "Offline";
     case 0:
       return "Waiting";
     case 1:
-      return "Working";
+      return "Generating";
     case 2:
-      return "Offline";
+      return "Fault";
     default:
       return status; // Return the status as is if not recognized
   }
