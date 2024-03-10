@@ -21,9 +21,9 @@ const Invoices = () => {
 
   // Function to handle row click
   const handleRowClick = (params) => {
-    const { id, name, location, capacity, status } = params.row;
+    const { id, name, location, capacity, status, power } = params.row;
     // Open a new tab with the plant details page
-    window.open(`/plant-details?id=${id}&name=${name}&location=${location}&capacity=${capacity}&status=${status}`, "_blank");
+    window.open(`/plant-details?id=${id}&name=${name}&location=${location}&capacity=${capacity}&status=${status}&power=${power}`, "_blank");
   };
 
   const columns = [
