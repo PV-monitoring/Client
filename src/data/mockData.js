@@ -2,6 +2,7 @@ import { tokens } from "../theme";
 import { useState, useEffect } from "react";
 import socket from "../utils/socket.js";
 
+// Team data
 export const mockDataTeam = [
   {
     id: 1,
@@ -77,6 +78,7 @@ export const mockDataTeam = [
   },
 ];
 
+// Contacts data
 export const mockDataContacts = [
   {
     id: 1,
@@ -201,73 +203,7 @@ export const mockDataContacts = [
   },
 ];
 
-// export const mockDataInvoices = [
-//   {
-//     id: 1,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "03/12/2022",
-//   },
-//   {
-//     id: 2,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "06/15/2021",
-//   },
-//   {
-//     id: 3,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "05/02/2022",
-//   },
-//   {
-//     id: 4,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "03/21/2022",
-//   },
-//   {
-//     id: 5,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "01/12/2021",
-//   },
-//   {
-//     id: 6,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "11/02/2022",
-//   },
-//   {
-//     id: 7,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "02/11/2022",
-//   },
-//   {
-//     id: 8,
-//     name: "Medawewa",
-//     capacity: "30kW",
-//     status: "1kW",
-//     location: "18 Ketawala-Galauda Rd, Galauda, Sri Lanka",
-//     created_time: "05/02/2021",
-//   },
-// ];
-
+// Plants data
 export const dynamicPlants = () => {
   const [plants, setPlants] = useState([]);
 
@@ -275,7 +211,7 @@ export const dynamicPlants = () => {
     const fetchData = async () => {
       try {
         // Your server should emit a 'plantsData' event when there's new data
-        socket.on("dataUpdate", (data) => {
+        socket.on("plantsUpdate", (data) => {
           console.log("Received plant data:", data);
           setPlants(data);
         });
@@ -288,7 +224,7 @@ export const dynamicPlants = () => {
 
     return () => {
       // Clean up event listeners on component unmount
-      socket.off("dataUpdate");
+      socket.off("plantsUpdate");
     };
   }, []); // Empty dependency array to run the effect only once
 
@@ -296,9 +232,9 @@ export const dynamicPlants = () => {
 };
 
 // Export a function that takes dynamic data as a parameter
-export const getMockDataInvoices = (dynamicData) => {
+export const getMockDataInvoices = (dynamicPlants) => {
   // Transform dynamic data if needed
-  const transformedData = dynamicData.map((plant) => ({
+  const transformedData = dynamicPlants.map((plant) => ({
     id: plant.plant_id,
     name: plant.plant_name,
     capacity: plant.capacity,
@@ -306,11 +242,62 @@ export const getMockDataInvoices = (dynamicData) => {
     status: plant.status,
     location: plant.address,
     created_time: plant.create_time,
+    plant_type: plant.plant_type,
+    to_hour: plant.to_hour,
+    eday: plant.eday,
+    total: plant.total,
+    isowner: plant.isowner,
   }));
 
   return transformedData;
 };
 
+
+// inverter data
+export const dynamicInverters = () => {
+  const [inverters, setInverters] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Your server should emit a 'invertersUpdate' event when there's new data
+        socket.on("invertersUpdate", (data) => {
+          console.log("Received inverter data:", data);
+          setInverters(data);
+        });
+      } catch (error) {
+        console.error("Error fetching inverter data:", error);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      // Clean up event listeners on component unmount
+      socket.off("invertersUpdate");
+    };
+  }, []); // Empty dependency array to run the effect only once
+
+  return inverters;
+};
+
+// Export a function that takes dynamic data as a parameter
+export const getInvertersData = (dynamicInverters) => {
+  // Transform dynamic data if needed
+  const transformedData = dynamicInverters.map((inverter) => ({
+    id: inverter.plant_id,
+    name: inverter.plant_name,
+    capacity: inverter.capacity,
+    power: inverter.pac,
+    status: inverter.status,
+    location: inverter.address,
+    created_time: inverter.create_time,
+  }));
+
+  return transformedData;
+};
+
+// 
 export const mockTransactions = [
   {
     plantId: "S0001",
@@ -344,6 +331,7 @@ export const mockTransactions = [
   },
 ];
 
+// 
 export const mockBarData = [
   {
     month: "Jan",
@@ -391,6 +379,7 @@ export const mockBarData = [
   },
 ];
 
+// 
 export const mockPieData = [
   {
     id: "hack",
@@ -424,6 +413,7 @@ export const mockPieData = [
   },
 ];
 
+// 
 export const mockLineData = [
   {
     id: "Actual Generation",
@@ -535,6 +525,7 @@ export const mockLineData = [
   },
 ];
 
+// 
 export const mockGeographyData = [
   {
     id: "AFG",

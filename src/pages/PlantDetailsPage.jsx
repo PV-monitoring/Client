@@ -6,10 +6,16 @@ import Header from "../components/Header";
 import LineChart from "../components/LineChart";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
+import { getInvertersData, dynamicInverters } from "../data/mockData";
 
 const PlantDetailsPage = () => {
   const [theme, colorMode] = useMode();
   const colors = tokens(theme.palette.mode);
+
+  // Use the function to get dynamic data
+  const dynamicData = dynamicInverters();
+  // Call the function to get transformed data based on dynamic data
+  const mockDataInvoices = getInvertersData(dynamicData);
 
   // State to store plant details
   const [plantDetails, setPlantDetails] = useState({
