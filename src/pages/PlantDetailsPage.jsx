@@ -4,25 +4,15 @@ import { ColorModeContext, useMode } from "../theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Header from "../components/Header";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-<<<<<<< HEAD
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
-import { getInvertersData, dynamicInverters } from "../data/mockData";
-=======
 import { Box, IconButton, Typography } from "@mui/material";
 import LineChart from "../components/LineChart";
 import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 import Gauge from "../components/Gauge"; 
 import { DataGrid } from "@mui/x-data-grid";
->>>>>>> 4577511f59105b59ad0997a71fff248dccd5cdd1
 
 const PlantDetailsPage = () => {
   const [theme, colorMode] = useMode();
   const colors = tokens(theme.palette.mode);
-
-  // Use the function to get dynamic data
-  const dynamicData = dynamicInverters();
-  // Call the function to get transformed data based on dynamic data
-  const mockDataInvoices = getInvertersData(dynamicData);
 
   // State to store plant details
   const [plantDetails, setPlantDetails] = useState({

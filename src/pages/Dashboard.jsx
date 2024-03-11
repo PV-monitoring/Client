@@ -130,10 +130,10 @@ const Dashboard = () => {
                     alignItems="center">
                     <Box>
                       <Typography variant="h5" fontWeight="600" color={colors.grey[100]}>
-                        Revenue Generated
+                        Total Generation Gap
                       </Typography>
                       <Typography variant="h3" fontWeight="bold" color={colors.greenAccent[500]}>
-                        $50,300.00
+                        25000 kWh
                       </Typography>
                     </Box>
                     <Box>
