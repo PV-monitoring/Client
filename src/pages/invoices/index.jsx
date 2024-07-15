@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { getMockDataInvoices, dynamicPlants } from "../../data/mockData";
 import Header from "../../components/Header";
 import Topbar from "../global/Topbar";
 import Sidebar from "../global/Sidebar";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "../../theme";
+import { useDynamicPlants } from "../../hooks/useDynamicPlants";
 
 const Invoices = () => {
   const [theme, colorMode] = useMode();
@@ -15,15 +15,15 @@ const Invoices = () => {
   const colors = tokens(theme.palette.mode);
 
   // Use the function to get dynamic data
-  const dynamicData = dynamicPlants();
-  // Call the function to get transformed data based on dynamic data
-  const mockDataInvoices = getMockDataInvoices(dynamicData);
+  const dynamicData = useDynamicPlants();
 
   // Function to handle row click
   const handleRowClick = (params) => {
     const { id, name, location, capacity, status, power } = params.row;
     // Open a new tab with the plant details page
-    window.open(`/plant-details?id=${id}&name=${name}&location=${location}&capacity=${capacity}&status=${status}&power=${power}`, "_blank");
+    // window.open(`/plant-details?id=${id}&name=${name}&location=${location}&capacity=${capacity}&status=${status}&power=${power}`, "_blank");
+    // navigate
+    window.location.href = `/plant-details?id=${id}&name=${name}&location=${location}&capacity=${capacity}&status=${status}&power=${power}`;
   };
 
   const columns = [
@@ -98,7 +98,7 @@ const Invoices = () => {
                   // Remove checkbox styles
                 }}
               >
-                <DataGrid rows={mockDataInvoices} columns={columns} onRowClick={handleRowClick} />
+                <DataGrid rows={dynamicData} columns={columns} onRowClick={handleRowClick} />
               </Box>
             </Box>
           </main>

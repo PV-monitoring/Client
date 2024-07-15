@@ -1,15 +1,43 @@
+import React, { useState, useEffect } from 'react';
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { mockLineData as data } from "../data/mockData";
+// import { mockLineData as data } from "../data/mockData";
 
-const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
+const LineChart = ({ powGenerationData, todayPowerGenerationData, isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const [dailyGenerationData, setDailyGenerationData] = useState([]);
+
+  useEffect(() => {
+    const newData = [];
+    for (let i = 1; i < powGenerationData.length; i++) {
+      newData.push({
+        date: powGenerationData[i].date,
+        daily_generation: powGenerationData[i].total_generation - powGenerationData[i - 1].total_generation,
+      });
+    }
+
+    if (todayPowerGenerationData && powGenerationData.length > 0) {
+      newData.push(todayPowerGenerationData);
+    }
+
+    setDailyGenerationData(newData);
+  }, [powGenerationData, todayPowerGenerationData]);
+
+  const formattedData = [{
+    id: "Power Generation",
+    color: tokens("dark").greenAccent[500],
+    data: dailyGenerationData.map((item) => ({
+      x: item.date,
+      y: item.daily_generation,
+    })),
+  }]
+
   return (
     <ResponsiveLine
-      data={data}
+      data={formattedData}
       theme={{
         axis: {
           domain: {
@@ -61,7 +89,7 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         orient: "bottom",
         tickSize: 0,
         tickPadding: 5,
-        tickRotation: 0,
+        tickRotation: -90,
         legend: isDashboard ? undefined : "Time", // added
         legendOffset: 36,
         legendPosition: "middle",

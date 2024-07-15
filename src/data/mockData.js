@@ -203,118 +203,6 @@ export const mockDataContacts = [
   },
 ];
 
-// Plants data
-export const dynamicPlants = () => {
-  const [plants, setPlants] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Your server should emit a 'plantsData' event when there's new data
-        socket.on("plantsUpdate", (data) => {
-          console.log("Received plant data:", data);
-          setPlants(data);
-        });
-      } catch (error) {
-        console.error("Error fetching plant data:", error);
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      // Clean up event listeners on component unmount
-      socket.off("plantsUpdate");
-    };
-  }, []); // Empty dependency array to run the effect only once
-
-  return plants;
-};
-
-// Export a function that takes dynamic data as a parameter
-// Export a function that takes dynamic data as a parameter
-export const getMockDataInvoices = (dynamicPlants) => {
-  // Transform dynamic data if needed
-  const transformedData = dynamicPlants.map((plant) => ({
-    id: plant.plant_id,
-    name: plant.plant_name,
-    capacity: plant.capacity,
-    power: plant.pac,
-    status: getStatusString(plant.status), // Map status to corresponding string
-    location: plant.address,
-    created_time: plant.create_time,
-    plant_type: plant.plant_type,
-    to_hour: plant.to_hour,
-    eday: plant.eday,
-    total: plant.total,
-    isowner: plant.isowner,
-  }));
-
-  return transformedData;
-};
-
-// Function to map status values to corresponding strings
-const getStatusString = (status) => {
-  switch (status) {
-    case -1:
-      return "Offline";
-    case 0:
-      return "Waiting";
-    case 1:
-      return "Generating";
-    case 2:
-      return "Fault";
-    default:
-      return status; // Return the status as is if not recognized
-  }
-};
-
-
-// inverter data
-export const dynamicInverters = () => {
-  const [inverters, setInverters] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Your server should emit a 'invertersUpdate' event when there's new data
-        socket.on("invertersUpdate", (data) => {
-          console.log("Received inverter data:", data);
-          setInverters(data);
-        });
-      } catch (error) {
-        console.error("Error fetching inverter data:", error);
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      // Clean up event listeners on component unmount
-      socket.off("invertersUpdate");
-    };
-  }, []); // Empty dependency array to run the effect only once
-
-  return inverters;
-};
-
-// Export a function that takes dynamic data as a parameter
-export const getInvertersData = (dynamicInverters) => {
-  // Transform dynamic data if needed
-  const transformedData = dynamicInverters.map((inverter) => ({
-    id: inverter.plant_id,
-    name: inverter.plant_name,
-    capacity: inverter.capacity,
-    power: inverter.pac,
-    status: inverter.status,
-    location: inverter.address,
-    created_time: inverter.create_time,
-  }));
-
-  return transformedData;
-};
-
-// 
 export const mockTransactions = [
   {
     plantId: "S0001",
@@ -348,7 +236,6 @@ export const mockTransactions = [
   },
 ];
 
-// 
 export const mockBarData = [
   {
     month: "Jan",
@@ -396,7 +283,6 @@ export const mockBarData = [
   },
 ];
 
-// 
 export const mockPieData = [
   {
     id: "hack",
@@ -430,7 +316,6 @@ export const mockPieData = [
   },
 ];
 
-// 
 export const mockLineData = [
   {
     id: "Actual Generation",
@@ -486,63 +371,62 @@ export const mockLineData = [
       },
     ],
   },
-  {
-    id: "Expected Generation",
-    color: tokens("dark").blueAccent[300],
-    data: [
-      {
-        x: "Jan",
-        y: 10,
-      },
-      {
-        x: "Feb",
-        y: 134,
-      },
-      {
-        x: "March",
-        y: 210,
-      },
-      {
-        x: "April",
-        y: 26,
-      },
-      {
-        x: "May",
-        y: 135,
-      },
-      {
-        x: "June",
-        y: 36,
-      },
-      {
-        x: "July",
-        y: 81,
-      },
-      {
-        x: "Aug",
-        y: 132,
-      },
-      {
-        x: "Sept",
-        y: 181,
-      },
-      {
-        x: "Oct",
-        y: 11,
-      },
-      {
-        x: "Nov",
-        y: 215,
-      },
-      {
-        x: "Dec",
-        y: 114,
-      },
-    ],
-  },
+  // {
+  //   id: "Expected Generation",
+  //   color: tokens("dark").blueAccent[300],
+  //   data: [
+  //     {
+  //       x: "Jan",
+  //       y: 10,
+  //     },
+  //     {
+  //       x: "Feb",
+  //       y: 134,
+  //     },
+  //     {
+  //       x: "March",
+  //       y: 210,
+  //     },
+  //     {
+  //       x: "April",
+  //       y: 26,
+  //     },
+  //     {
+  //       x: "May",
+  //       y: 135,
+  //     },
+  //     {
+  //       x: "June",
+  //       y: 36,
+  //     },
+  //     {
+  //       x: "July",
+  //       y: 81,
+  //     },
+  //     {
+  //       x: "Aug",
+  //       y: 132,
+  //     },
+  //     {
+  //       x: "Sept",
+  //       y: 181,
+  //     },
+  //     {
+  //       x: "Oct",
+  //       y: 11,
+  //     },
+  //     {
+  //       x: "Nov",
+  //       y: 215,
+  //     },
+  //     {
+  //       x: "Dec",
+  //       y: 114,
+  //     },
+  //   ],
+  // },
 ];
 
-// 
 export const mockGeographyData = [
   {
     id: "AFG",
