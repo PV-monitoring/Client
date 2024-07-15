@@ -145,7 +145,7 @@ const Dashboard = () => {
                     </Box>
                   </Box>
                   <Box height="250px" m="-20px 0 0 0">
-                    <LineChart isDashboard={true} />
+                    <LineChart isDashboard={true} powGenerationData={[]} todayPowerGenerationData={[]} />
                   </Box>
                 </Box>
                 <Box
